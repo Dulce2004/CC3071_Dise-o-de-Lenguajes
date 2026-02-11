@@ -130,10 +130,10 @@ State 7
    11           | expression . '*' expression
    12           | expression . '/' expression
 
-    '*'  shift, and go to state 11
-    '/'  shift, and go to state 12
-    '+'  shift, and go to state 13
-    '-'  shift, and go to state 14
+    '+'  shift, and go to state 11
+    '-'  shift, and go to state 12
+    '*'  shift, and go to state 13
+    '/'  shift, and go to state 14
     ':'  shift, and go to state 15
 
 
@@ -163,7 +163,7 @@ State 10
 
 State 11
 
-   11 expression: expression '*' . expression
+    9 expression: expression '+' . expression
 
     NUMBER  shift, and go to state 1
     ID      shift, and go to state 16
@@ -173,7 +173,7 @@ State 11
 
 State 12
 
-   12 expression: expression '/' . expression
+   10 expression: expression '-' . expression
 
     NUMBER  shift, and go to state 1
     ID      shift, and go to state 16
@@ -183,7 +183,7 @@ State 12
 
 State 13
 
-    9 expression: expression '+' . expression
+   11 expression: expression '*' . expression
 
     NUMBER  shift, and go to state 1
     ID      shift, and go to state 16
@@ -193,7 +193,7 @@ State 13
 
 State 14
 
-   10 expression: expression '-' . expression
+   12 expression: expression '/' . expression
 
     NUMBER  shift, and go to state 1
     ID      shift, and go to state 16
@@ -223,10 +223,10 @@ State 17
    11           | expression . '*' expression
    12           | expression . '/' expression
 
-    '*'  shift, and go to state 11
-    '/'  shift, and go to state 12
-    '+'  shift, and go to state 13
-    '-'  shift, and go to state 14
+    '+'  shift, and go to state 11
+    '-'  shift, and go to state 12
+    '*'  shift, and go to state 13
+    '/'  shift, and go to state 14
 
     $default  reduce using rule 6 (assignment)
 
@@ -234,43 +234,18 @@ State 17
 State 18
 
     9 expression: expression . '+' expression
-   10           | expression . '-' expression
-   11           | expression . '*' expression
-   11           | expression '*' expression .
-   12           | expression . '/' expression
-
-    '+'  shift, and go to state 13
-    '-'  shift, and go to state 14
-
-    $default  reduce using rule 11 (expression)
-
-
-State 19
-
-    9 expression: expression . '+' expression
-   10           | expression . '-' expression
-   11           | expression . '*' expression
-   12           | expression . '/' expression
-   12           | expression '/' expression .
-
-    '+'  shift, and go to state 13
-    '-'  shift, and go to state 14
-
-    $default  reduce using rule 12 (expression)
-
-
-State 20
-
-    9 expression: expression . '+' expression
     9           | expression '+' expression .
    10           | expression . '-' expression
    11           | expression . '*' expression
    12           | expression . '/' expression
 
+    '*'  shift, and go to state 13
+    '/'  shift, and go to state 14
+
     $default  reduce using rule 9 (expression)
 
 
-State 21
+State 19
 
     9 expression: expression . '+' expression
    10           | expression . '-' expression
@@ -278,4 +253,29 @@ State 21
    11           | expression . '*' expression
    12           | expression . '/' expression
 
+    '*'  shift, and go to state 13
+    '/'  shift, and go to state 14
+
     $default  reduce using rule 10 (expression)
+
+
+State 20
+
+    9 expression: expression . '+' expression
+   10           | expression . '-' expression
+   11           | expression . '*' expression
+   11           | expression '*' expression .
+   12           | expression . '/' expression
+
+    $default  reduce using rule 11 (expression)
+
+
+State 21
+
+    9 expression: expression . '+' expression
+   10           | expression . '-' expression
+   11           | expression . '*' expression
+   12           | expression . '/' expression
+   12           | expression '/' expression .
+
+    $default  reduce using rule 12 (expression)

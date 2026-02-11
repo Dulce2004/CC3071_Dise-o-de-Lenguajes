@@ -166,10 +166,10 @@ enum yysymbol_kind_t
   YYSYMBOL_NUMBER = 3,                     /* NUMBER  */
   YYSYMBOL_ID = 4,                         /* ID  */
   YYSYMBOL_5_ = 5,                         /* '='  */
-  YYSYMBOL_6_ = 6,                         /* '*'  */
-  YYSYMBOL_7_ = 7,                         /* '/'  */
-  YYSYMBOL_8_ = 8,                         /* '+'  */
-  YYSYMBOL_9_ = 9,                         /* '-'  */
+  YYSYMBOL_6_ = 6,                         /* '+'  */
+  YYSYMBOL_7_ = 7,                         /* '-'  */
+  YYSYMBOL_8_ = 8,                         /* '*'  */
+  YYSYMBOL_9_ = 9,                         /* '/'  */
   YYSYMBOL_10_ = 10,                       /* ':'  */
   YYSYMBOL_YYACCEPT = 11,                  /* $accept  */
   YYSYMBOL_program = 12,                   /* program  */
@@ -534,7 +534,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     6,     8,     2,     9,     2,     7,     2,     2,
+       2,     2,     8,     6,     2,     7,     2,     9,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,    10,     2,
        2,     5,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -562,8 +562,8 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    23,    23,    26,    27,    30,    31,    34,    42,    43,
-      44,    45,    46,    47
+       0,    26,    26,    29,    30,    33,    34,    37,    45,    46,
+      47,    48,    49,    50
 };
 #endif
 
@@ -580,7 +580,7 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "NUMBER", "ID", "'='",
-  "'*'", "'/'", "'+'", "'-'", "':'", "$accept", "program",
+  "'+'", "'-'", "'*'", "'/'", "':'", "$accept", "program",
   "statement_list", "statement", "assignment", "expression", YY_NULLPTR
 };
 
@@ -616,8 +616,8 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     8,     9,     0,     2,     3,     5,     0,     0,     1,
-       4,     0,     0,     0,     0,     6,     9,     7,    12,    13,
-      10,    11
+       4,     0,     0,     0,     0,     6,     9,     7,    10,    11,
+      12,    13
 };
 
 /* YYPGOTO[NTERM-NUM].  */
@@ -1133,13 +1133,13 @@ yyreduce:
   switch (yyn)
     {
   case 6: /* statement: expression ':'  */
-#line 31 "./files/simple_language.y"
+#line 34 "./files/simple_language.y"
                               { std::cout << (yyvsp[-1].num) << std::endl; }
 #line 1139 "y.tab.c"
     break;
 
   case 7: /* assignment: ID '=' expression  */
-#line 35 "./files/simple_language.y"
+#line 38 "./files/simple_language.y"
     { 
         printf("Assign %s = %d\n", (yyvsp[-2].str)->c_str(), (yyvsp[0].num)); 
         (yyval.num) = vars[*(yyvsp[-2].str)] = (yyvsp[0].num); 
@@ -1149,37 +1149,37 @@ yyreduce:
     break;
 
   case 8: /* expression: NUMBER  */
-#line 42 "./files/simple_language.y"
+#line 45 "./files/simple_language.y"
                                     { (yyval.num) = (yyvsp[0].num); }
 #line 1155 "y.tab.c"
     break;
 
   case 9: /* expression: ID  */
-#line 43 "./files/simple_language.y"
+#line 46 "./files/simple_language.y"
                                     { (yyval.num) = vars[*(yyvsp[0].str)];      delete (yyvsp[0].str); }
 #line 1161 "y.tab.c"
     break;
 
   case 10: /* expression: expression '+' expression  */
-#line 44 "./files/simple_language.y"
+#line 47 "./files/simple_language.y"
                                     { (yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); }
 #line 1167 "y.tab.c"
     break;
 
   case 11: /* expression: expression '-' expression  */
-#line 45 "./files/simple_language.y"
+#line 48 "./files/simple_language.y"
                                     { (yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num); }
 #line 1173 "y.tab.c"
     break;
 
   case 12: /* expression: expression '*' expression  */
-#line 46 "./files/simple_language.y"
+#line 49 "./files/simple_language.y"
                                     { (yyval.num) = (yyvsp[-2].num) * (yyvsp[0].num); }
 #line 1179 "y.tab.c"
     break;
 
   case 13: /* expression: expression '/' expression  */
-#line 47 "./files/simple_language.y"
+#line 50 "./files/simple_language.y"
                                     { (yyval.num) = (yyvsp[-2].num) / (yyvsp[0].num); }
 #line 1185 "y.tab.c"
     break;
@@ -1378,7 +1378,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 50 "./files/simple_language.y"
+#line 53 "./files/simple_language.y"
 
 
 int main() {

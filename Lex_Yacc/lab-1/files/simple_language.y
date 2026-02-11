@@ -15,8 +15,8 @@ int yylex();
 %type<num> assignment
 
 %right '='
-%left '*' '/'
 %left '+' '-'
+%left '*' '/'
 
 // Se cambian los valores de *, /, +, - para el ejercicio 5
 

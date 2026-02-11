@@ -776,7 +776,7 @@ case 10:
 YY_RULE_SETUP
 #line 18 "./files/simple_language.l"
 {
-    printf("ERROR LEXICO: token invalido '%s' \n", yytext);
+    printf("ERROR LEXICO: token invalido '%s' \n", yytext); //se agrego esta linea para el manejo de errores de token invalido
   }
 	YY_BREAK
 case 11:
